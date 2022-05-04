@@ -69,12 +69,8 @@ public class BuildHeap {
             kelement = extractMin( data , n)  ;
 
             n-- ;
-            //data[n]= 1000 ; // data
             buildMinHeap(data,n);
-            //System.out.println( i + java.util.Arrays.toString(data) );
-            //System.out.println(i + "-element " + kelement ) ;
         }
-
         return data[n] ;
     }
     public static void main(String args[]) {
