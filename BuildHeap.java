@@ -29,12 +29,15 @@ public class BuildHeap {
         }
     }
 
-    static void buildMinHeap(int arr[]) {
+    public static void buildMinHeap(int arr[]) {
         int n = arr.length;
         for (int i = n; i >= 0; i--)
             minHeapify(arr, i, n);
     }
-
+    public static void buildMinHeap(int arr[],int n) {
+        for (int i = n; i >= 0; i--)
+            minHeapify(arr, i, n);
+    }
     // A utility function to print the array
     // representation of Heap
     public static void printHeap(int arr[], int n) {
@@ -46,13 +49,33 @@ public class BuildHeap {
 
         System.out.println();
     }
-    public static int extractMin(int [] data, int n)
-    { //makhdemthomch mezzlt
-     return n  ;
+    public static int extractMin(int[] data, int n) {
+
+        int min = data[0]; //min extracted
+        for (int i = 0 ; i<n-1 ; i++)
+        { data [i] = data [i+1]  ;} //copy of array without the minimum element
+        n-- ;
+        buildMinHeap(data);
+        printHeap(data, n);
+        data[n] = min ; //addition of min element at the end of data position n-1
+        System.out.println( java.util.Arrays.toString(data));
+        return min ;
     }
-    public static int heapSelect(int [] data, int k){
-        ////makhdemthomch mezzlt
-        return k ;
+    public static int heapSelect(int[] data, int k) {
+        int kelement = 0 ;
+        int n = data.length   ;
+        for (int i = 0 ; i < k ; i++)
+        {
+            kelement = extractMin( data , n)  ;
+
+            n-- ;
+            //data[n]= 1000 ; // data
+            buildMinHeap(data,n);
+            //System.out.println( i + java.util.Arrays.toString(data) );
+            //System.out.println(i + "-element " + kelement ) ;
+        }
+
+        return data[n] ;
     }
     public static void main(String args[]) {
         String input0 = args[0];
@@ -85,9 +108,15 @@ public class BuildHeap {
 
                 buildMinHeap(Array);
                 printHeap(Array, Array.length);
+
+                int y = extractMin(Array,Array.length) ;
+                System.out.println("min ist " + y) ;
+
                 int x = heapSelect(Array,k) ;
                 System.out.println( " Das " + k + "-kleineste Element von " + java.util.Arrays.toString(Array) +
                         " ist" + x );
+
+
             }
         }
         catch (NumberFormatException e) {
