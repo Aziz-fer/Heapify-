@@ -56,9 +56,9 @@ public class BuildHeap {
         { data [i] = data [i+1]  ;} //copy of array without the minimum element
         n-- ;
         buildMinHeap(data);
-        printHeap(data, n);
+       // printHeap(data, n);
         data[n] = min ; //addition of min element at the end of data position n-1
-        System.out.println( java.util.Arrays.toString(data));
+        // System.out.println( java.util.Arrays.toString(data));
         return min ;
     }
     public static int heapSelect(int[] data, int k) {
@@ -99,11 +99,11 @@ public class BuildHeap {
 
             int[] Array = new int[data.size()];
             for (int i = 0; i < data.size(); i++) {
-                Array[i] = (int) data.get(i);
+                Array[i] = (int) data.get(i); }
 
 
                 buildMinHeap(Array);
-                printHeap(Array, Array.length);
+                //printHeap(Array, Array.length);
 
                 int y = extractMin(Array,Array.length) ;
                 System.out.println("min ist " + y) ;
@@ -113,7 +113,7 @@ public class BuildHeap {
                         " ist" + x );
 
 
-            }
+
         }
         catch (NumberFormatException e) {
 
